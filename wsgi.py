@@ -1,9 +1,9 @@
-from flask import Flask, request
-app = Flask(__name__, static_url_path='')
+from flask import Flask
+application = Flask(__name__)
 
-@app.route('/index/')
-def root():
-    return app.send_static_file('index.html')
+@application.route("/")
+def hello():
+    return "Hello Janus!"
 
-if __name__ == '__main__':
-  app.run(debug=True)
+if __name__ == "__main__":
+    application.run()
