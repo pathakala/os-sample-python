@@ -1,3 +1,6 @@
+from flask import Flask
+application = Flask(__name__)
+
 def main():
 	now = datetime.datetime.now()
 	timeString = now.strftime("%Y-%m-%d %I:%M %p")
@@ -16,3 +19,6 @@ def main():
 		'buttons' : buttonGrid
 	}
 	return render_template('main.html', **templateData) 
+	
+	if __name__ == "__main__":
+    application.run()
