@@ -1,23 +1,18 @@
-from flask import Flask, Markup
-application = Flask(__name__)
+def main():
+	now = datetime.datetime.now()
+	timeString = now.strftime("%Y-%m-%d %I:%M %p")
 
-@application.route("/")
-def test_escaping(self):
-        text = '<p>Hello World!'
-        app = flask.Flask(__name__)
-        @app.route('/')
-        def index():
-            return flask.render_template('escaping_template.html', text=text,
-                                         html=flask.Markup(text))
-        lines = app.test_client().get('/').data.splitlines()
-        self.assert_equal(lines, [
-            b'&lt;p&gt;Hello World!',
-            b'<p>Hello World!',
-            b'<p>Hello World!',
-            b'<p>Hello World!',
-            b'&lt;p&gt;Hello World!',
-            b'<p>Hello World!'
-        ]) 
+	passer = ''
+	for i in range(len(roomName)):
+		passer = passer + "<p class='roomtitle'>%s</p>" % (roomName[i])
+		for j in range(len(accName[i])):
+			buttonHtmlName = accName[i][j].replace(" ", "<br>")
+			passer = passer + "<span id='button%d%d'><button class='%s' onclick='toggle(%d,%d)'>%s</button></span>" % (i, j, accState(i,j), i, j, buttonHtmlName)
 
-if __name__ == "__main__":
-    application.run()
+	buttonGrid = Markup(passer)
+	templateData = {
+		'title' : 'WebGPIO',
+		'time': timeString,
+		'buttons' : buttonGrid
+	}
+	return render_template('main.html', **templateData) 
